@@ -3,27 +3,43 @@ const lists = document.querySelectorAll('.list');
 
 let draggedItem = null;
 
-for (item of list_items){
-    item.addEventListener('dragstart',function(){
+for (const item of list_items) {
+    item.addEventListener('dragstart', function () {
         console.log('drag-Start');
         draggedItem = item;
-        setTimeout(function(){
-            item.style.display='none';
-        },0);
+        setTimeout(function () {
+            item.style.display = 'none';
+        }, 0);
     });
 
-    item.addEventListener('dragend',function(){
+    item.addEventListener('dragend', function () {
         console.log('drag-End');
-        setTimeout(function(){
-            draggedItem.style.display='block';
+        setTimeout(function () {
+            draggedItem.style.display = 'block';
             draggedItem = null;
-        },0);
+        }, 0);
     });
 
-    for(list of lists){
-        list.addEventListener('dragover',function(e){
+    for (const list of lists) {
+        list.addEventListener('dragover', function (e) {
             e.preventDefault();
-        })
+        });
+
+        list.addEventListener('dragenter', function (e) {
+            e.preventDefault();
+            this.style.backgroundColor = 'rgba(0,0,0,0.2)';
+        });
+
+        list.addEventListener('dragleave', function (e) {
+            // e.preventDefault();
+            this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+        });
+
+        list.addEventListener('drop', function (e) {
+            // e.preventDefault();
+            this.append(draggedItem);
+            this.style.backgroundColor = 'rgba(0,0,0,0.1)';
+        });
     }
 
 

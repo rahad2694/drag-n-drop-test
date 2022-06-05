@@ -1,25 +1,27 @@
+// Declaring variables for the array of boxes and for the array of columns:
 const list_items = document.querySelectorAll('.list-item');
 const lists = document.querySelectorAll('.list');
 
 let draggedItem = null;
 
+// looping through the array of box items:
 for (const item of list_items) {
     item.addEventListener('dragstart', function () {
-        // console.log('drag-Start');
         draggedItem = item;
+
         setTimeout(function () {
             item.style.display = 'none';
         }, 0);
     });
 
     item.addEventListener('dragend', function () {
-        // console.log('drag-End');
         setTimeout(function () {
             draggedItem.style.display = 'block';
             draggedItem = null;
         }, 0);
     });
 
+    // looping through columns to ensure drag events and drop an item with logic:
     for (const list of lists) {
         list.addEventListener('dragover', function (e) {
             e.preventDefault();
@@ -27,7 +29,7 @@ for (const item of list_items) {
 
         list.addEventListener('dragenter', function (e) {
             e.preventDefault();
-            this.style.backgroundColor = 'rgba(0,0,0,0.2)';
+            this.style.backgroundColor = 'rgba(0,0,0,0.3)';
         });
 
         list.addEventListener('dragleave', function (e) {
@@ -35,13 +37,13 @@ for (const item of list_items) {
         });
 
         list.addEventListener('drop', function (e) {
-            // console.log(draggedItem.innerText);
-            let column = this.children;
+            let targetColumnMembers = this.children;
 
-            if (draggedItem.innerText != column[0]?.innerText && draggedItem.innerText != column[1]?.innerText && draggedItem.innerText != column[2]?.innerText && draggedItem.innerText != column[3]?.innerText && draggedItem.innerText != column[4]?.innerText && draggedItem.innerText != column[5]?.innerText) {
+            // Checking it any of the boxes in the targeted column matches with our dragged box or not:
+            if (draggedItem.innerText != targetColumnMembers[0]?.innerText && draggedItem.innerText != targetColumnMembers[1]?.innerText && draggedItem.innerText != targetColumnMembers[2]?.innerText && draggedItem.innerText != targetColumnMembers[3]?.innerText && draggedItem.innerText != targetColumnMembers[4]?.innerText && draggedItem.innerText != targetColumnMembers[5]?.innerText) {
                 this.append(draggedItem);
             } else {
-                console.log('Already Exists!')
+                // console.log('Already Exists!')
             }
             this.style.backgroundColor = 'rgba(0,0,0,0.1)';
         });

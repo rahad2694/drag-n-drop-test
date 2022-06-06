@@ -1,7 +1,7 @@
 # Simple Drag and Drop Test
 
-- Live Site Link [Click Here](https://drag-n-drop-test.netlify.app/).
-- Live Site Link [Click Here](https://drive.google.com/file/d/1nl-YG_j_vDFDYXJfTeaC5aFPcphImos1/view?usp=sharing).
+- Live Site : [Click Here](https://drag-n-drop-test.netlify.app/).
+- Video Description : [Click Here](https://drive.google.com/file/d/1nl-YG_j_vDFDYXJfTeaC5aFPcphImos1/view?usp=sharing).
 
 ## Project Features:
 
